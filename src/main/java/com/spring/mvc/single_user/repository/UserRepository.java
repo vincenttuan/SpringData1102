@@ -4,6 +4,7 @@ import com.spring.mvc.single_user.entities.User;
 import java.util.Date;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /*
@@ -31,5 +32,7 @@ public interface UserRepository extends JpaRepository<User, Long>{
     // WHERE id in (2, 4, 8, 16 ...) OR birth <= '2000/12/31'
     List<User> getByIdInOrBirthLessThanEqual(List<Long> ids, Date birth);
     
-    
+    // 查詢 User + age < ? (但是 age 並不是 User 的屬性)
+    @Query("SELECT u FROM User u WHERE (YEAR(current_date) - YEAR(u.birth)) < :age")
+    List<User> getByAgeLessThan(Integer age);
 }

@@ -31,5 +31,7 @@ public class Test4 {
             System.out.println("Date Error !");
         }
         
+        users = ur.getByAgeLessThan(20);
+        System.out.println(users);
     }
 }
