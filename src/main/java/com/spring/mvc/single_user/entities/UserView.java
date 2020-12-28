@@ -13,10 +13,13 @@ import org.hibernate.annotations.Synchronize;
 @Entity
 @Immutable // 只能查詢
 @Synchronize({"T_User"}) // 查詢的資料與T_User實體資料同步
+//@Subselect("SELECT u.id, u.name, u.email, u.birth, "
+//        + "(YEAR(CURRENT_DATE)-YEAR(u.birth)) as age "
+//        + "FROM T_User u "
+//        + "ORDER BY age DESC") // 按照 age 排序 DESC(大->小) ASC(小->大)
 @Subselect("SELECT u.id, u.name, u.email, u.birth, "
         + "(YEAR(CURRENT_DATE)-YEAR(u.birth)) as age "
-        + "FROM T_User u "
-        + "ORDER BY age DESC") // 按照 age 排序 DESC(大->小) ASC(小->大)
+        + "FROM T_User u ")
 public class UserView {
     @Id
     private Long id;
