@@ -33,5 +33,8 @@ public class Test4 {
         
         users = ur.getByAgeLessThan(20);
         System.out.println(users);
+        
+        Long totalCount = ur.getTotalCount();
+        System.out.println(totalCount);
     }
 }

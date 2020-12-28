@@ -35,4 +35,8 @@ public interface UserRepository extends JpaRepository<User, Long>{
     // 查詢 User + age < ? (但是 age 並不是 User 的屬性)
     @Query("SELECT u FROM User u WHERE (YEAR(current_date) - YEAR(u.birth)) < :age")
     List<User> getByAgeLessThan(Integer age);
+    
+    // 查詢資料筆數
+    @Query(value = "SELECT count(id) FROM T_User", nativeQuery = true)
+    Long getTotalCount();
 }
