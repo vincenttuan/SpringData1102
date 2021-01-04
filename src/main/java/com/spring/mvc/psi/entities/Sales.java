@@ -8,23 +8,20 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "PURCHASE")
-public class Purchase {
+@Table(name = "SALES")
+public class Sales {
     @Id
     @GeneratedValue
     private Integer id;
     
     @Column
-    private Integer price; // 成本
+    private Integer price; // 售價
     
     @Column
     private Integer quantity;
     
-    //@Temporal(TemporalType.TIMESTAMP)
     @Column
     private Date date = new Date();
     
