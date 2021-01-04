@@ -75,6 +75,11 @@ public class Inventory {
     public void setSaTotal(Integer saTotal) {
         this.saTotal = saTotal;
     }
+
+    @Override
+    public String toString() {
+        return "Inventory{" + "id=" + id + ", name=" + name + ", puQty=" + puQty + ", puTotal=" + puTotal + ", saQty=" + saQty + ", saTotal=" + saTotal + '}';
+    }
     
     
 }
