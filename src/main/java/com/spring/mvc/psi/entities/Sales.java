@@ -29,6 +29,17 @@ public class Sales {
     @JoinColumn(name = "pid", referencedColumnName = "id")
     private Product product;
 
+    public Sales() {
+    }
+
+    public Sales(Integer price, Integer quantity, Product product) {
+        this.price = price;
+        this.quantity = quantity;
+        this.product = product;
+    }
+    
+    
+    
     public Integer getId() {
         return id;
     }

@@ -34,6 +34,17 @@ public class Purchase {
     @ManyToOne
     @JoinColumn(name = "pid", referencedColumnName = "id")
     private Product product;
+
+    public Purchase() {
+    }
+
+    public Purchase(Integer price, Integer quantity, Product product) {
+        this.price = price;
+        this.quantity = quantity;
+        this.product = product;
+    }
+    
+    
     
     public Integer getId() {
         return id;
