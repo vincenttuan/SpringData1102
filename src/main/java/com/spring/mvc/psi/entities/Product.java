@@ -1,10 +1,13 @@
 package com.spring.mvc.psi.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,7 +23,13 @@ public class Product {
     @Column(name = "image", columnDefinition = "clob") // clob 大字串, blob 大二進位
     @Lob
     private String image; // base64 String for image
-
+    
+    @OneToMany(mappedBy = "product")
+    private List<Purchase> purchases = new ArrayList<>();
+    
+    @OneToMany(mappedBy = "product")
+    private List<Sales> saleses = new ArrayList<>();
+    
     public Integer getId() {
         return id;
     }
@@ -43,6 +52,22 @@ public class Product {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public List<Purchase> getPurchases() {
+        return purchases;
+    }
+
+    public void setPurchases(List<Purchase> purchases) {
+        this.purchases = purchases;
+    }
+
+    public List<Sales> getSaleses() {
+        return saleses;
+    }
+
+    public void setSaleses(List<Sales> saleses) {
+        this.saleses = saleses;
     }
     
     
