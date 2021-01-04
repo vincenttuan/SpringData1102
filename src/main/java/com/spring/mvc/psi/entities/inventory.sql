@@ -1,5 +1,5 @@
 -- 庫存 
--- 建立一個View, 名稱 : Investory
+-- 建立一個View, 名稱 : Inventory
 -- id, name, 買進數量, 買進總價, 賣出數量, 賣出總價
 SELECT p.id, p.name, 
        pu.q as pu_qty, pu.pq as pu_total,
