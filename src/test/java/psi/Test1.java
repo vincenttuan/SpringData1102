@@ -44,6 +44,6 @@ public class Test1 {
         Sales s5 = new Sales(50, 10, p1);
         sr.save(Arrays.asList(s1, s2, s3, s4, s5));
         System.out.println("OK");
-        
+        ctx.close();
     }
 }
