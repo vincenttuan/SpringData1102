@@ -10,3 +10,13 @@ ON p.id = pu.pid
 LEFT JOIN (SELECT p.ID as pid, SUM(sa.QUANTITY) as q, SUM(sa.PRICE * sa.QUANTITY) as pq FROM PRODUCT p, Sales sa WHERE p.ID = sa.PID GROUP BY p.ID) as sa
 ON p.id = sa.pid;
 
+-- 庫存 2
+-- 建立一個View, 名稱 : Inventory2
+SELECT i.id, 
+       i."NAME", 
+       i.PU_QTY-i.SA_QTY as qty, 
+       i.PU_TOTAL/i.PU_QTY as cost ,
+       CAST(i.PU_TOTAL/i.PU_QTY/0.3 AS INTEGER) as price1 ,
+       CAST(i.PU_TOTAL/i.PU_QTY/0.2 AS INTEGER) as price2 
+FROM INVENTORY i
+
