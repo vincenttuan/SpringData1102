@@ -1,6 +1,7 @@
 package psi;
 
 import com.spring.mvc.psi.entities.Product;
+import com.spring.mvc.psi.entities.Purchase;
 import com.spring.mvc.psi.repository.ProductRepository;
 import com.spring.mvc.psi.repository.PurchaseRepository;
 import com.spring.mvc.psi.repository.SalesRepository;
@@ -28,8 +29,12 @@ public class Test1 {
         Product p1 = pr.findOne(1);
         Product p2 = pr.findOne(2);
         Product p3 = pr.findOne(3);
-        
-        
+        Purchase u1 = new Purchase(10, 20, p1); // price, quantity, product
+        Purchase u2 = new Purchase(15, 25, p2);
+        Purchase u3 = new Purchase(20, 30, p3);
+        Purchase u4 = new Purchase(15, 30, p1);
+        Purchase u5 = new Purchase(20, 10, p2);
+        ur.save(Arrays.asList(u1, u2, u3, u4, u5));
         System.out.println("OK");
         
     }
