@@ -54,7 +54,7 @@
                                 商品圖片 : <br >
                                 <input type="file" name="myfile" id="myfile" /><p />
                                 <form:input path="image" readonly="true" /><p />
-                                <img id="previewImage" src="${product.image}" /><p />
+                                <img id="previewImage" src="${product.image==null?space:product.image}" width="${product.image==null?0:50}" /><p />
                                 <input type="text" id="_method" name="_method" value="${ _method }" readonly /><p />
                                 <button type="submit" class="pure-button pure-button-primary">Submit</button>
                             </fieldset>
