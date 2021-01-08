@@ -2,11 +2,13 @@ package com.spring.mvc.psi.controller;
 
 import com.spring.mvc.psi.entities.Product;
 import com.spring.mvc.psi.repository.ProductRepository;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,10 +21,21 @@ public class PSIController {
     private ProductRepository pr;
     
     // 讀取商品資料
-    @GetMapping(value = {"/product"})
-    public String readProduct(Model model) {
+    @GetMapping(value = {"/product", "/product/{id}", "/product/{delete}/{id}"})
+    public String readProduct(Model model,
+            @PathVariable Optional<Integer> id,
+            @PathVariable Optional<String> delete) {
         Product product = new Product();
-        
+        String _method = "POST";
+        if(id.isPresent()) {
+            product = pr.findOne(id.get());
+            if(delete.isPresent() && delete.get().equals("delete")) {
+                _method = "DELETE";
+            } else {
+                _method = "PUT";
+            }
+        }
+        model.addAttribute("_method", _method);
         model.addAttribute("product", product);
         model.addAttribute("products", pr.findAll());
         return "psi/product";
