@@ -3,6 +3,7 @@ package com.spring.mvc.psi.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import org.hibernate.annotations.Immutable;
 
@@ -15,6 +16,10 @@ public class Inventory {
     
     @Column
     private String name;
+    
+    @Column(name = "image", columnDefinition = "clob")
+    @Lob
+    private String image;
     
     @Column(name = "PU_QTY")
     private Integer puQty;
@@ -76,10 +81,15 @@ public class Inventory {
         this.saTotal = saTotal;
     }
 
-    @Override
-    public String toString() {
-        return "Inventory{" + "id=" + id + ", name=" + name + ", puQty=" + puQty + ", puTotal=" + puTotal + ", saQty=" + saQty + ", saTotal=" + saTotal + '}';
+    public String getImage() {
+        return image;
     }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    
     
     
 }
