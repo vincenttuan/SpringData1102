@@ -53,6 +53,7 @@
                                 <form:input path="name" placeholder="請輸入商品名稱" /><p />
                                 商品圖片 : <br >
                                 <input type="file" name="myfile" id="myfile" /><p />
+                                <form:input path="image" readonly="true" /><p />
                                 <img id="previewImage" src="${product.image}" /><p />
                                 <button type="submit" class="pure-button pure-button-primary">Submit</button>
                             </fieldset>
