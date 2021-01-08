@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -25,6 +26,7 @@ public class PSIController {
     // 讀取商品資料
     @GetMapping(value = {"/product", "/product/{id}", "/product/{delete}/{id}"})
     public String readProduct(Model model,
+            @RequestParam Optional<Boolean> deleteError,
             @PathVariable Optional<Integer> id,
             @PathVariable Optional<String> delete) {
         Product product = new Product();
@@ -40,6 +42,7 @@ public class PSIController {
         model.addAttribute("_method", _method);
         model.addAttribute("product", product);
         model.addAttribute("products", pr.findAll());
+        model.addAttribute("deleteError", deleteError.isPresent()?"刪除失敗":"");
         return "psi/product";
     }
     
@@ -63,7 +66,7 @@ public class PSIController {
         try {
             pr.delete(product.getId());
         } catch (Exception e) {
-            return "redirect: ../psi/product?delete=error";
+            return "redirect: ../psi/product?deleteError=true";
         }
         return "redirect: ../psi/product";
     }

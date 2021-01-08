@@ -56,6 +56,7 @@
                                 <form:input path="image" readonly="true" /><p />
                                 <img id="previewImage" src="${product.image==null?space:product.image}" width="${product.image==null?0:50}" /><p />
                                 <input type="text" id="_method" name="_method" value="${ _method }" readonly /><p />
+                                <div style="color: red">${ deleteError }</div>
                                 <button type="submit" class="pure-button pure-button-primary">Submit</button>
                             </fieldset>
                         </form:form>
