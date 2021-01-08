@@ -30,7 +30,7 @@ public class PSIController {
     @PostMapping(value = {"/product"})
     public String createProduct(@ModelAttribute("product") Product product) {
         pr.saveAndFlush(product);
-        return "redirect: ../product";
+        return "redirect: ../psi/product";
     }
     
 }
