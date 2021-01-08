@@ -18,7 +18,7 @@
 
             <div id="main">
                 <div class="header">
-                    <h1>Pruchase</h1>
+                    <h1>Purchase</h1>
                     <h2>進貨</h2>
                 </div>
                 <table class="pure-table" style="border: none;">
@@ -47,7 +47,7 @@
                                     <tbody>
                                         <c:forEach var="i" items="${ inventories2 }">
                                             <tr>
-                                            <form class="pure-form" method="post" onsubmit="return purchase(this);" action="${pageContext.request.contextPath}/mvc/psi/purchase">
+                                            <form class="pure-form" method="post" action="${pageContext.request.contextPath}/mvc/psi/purchase">
                                                 <td><input type="text" name="pid" value="${ i.id }" readonly style="max-width: 50px" /></td>
                                                 <td>${ i.name }</td>
                                                 <td><img style="cursor: zoom-in" id="blah" src="${ i.image==null?space:i.image }" width="${ i.image==null?'0':'100' }" /></td>
@@ -81,7 +81,7 @@
                         <td valign="top">
                             <!-- 列表 -->
                             <fieldset class="pure-form">
-                                <legend>Pruchase list</legend>
+                                <legend>Purchase list</legend>
                                 <table class="pure-table pure-table-bordered" width="100%">
                                     <thead>
                                         <tr>
