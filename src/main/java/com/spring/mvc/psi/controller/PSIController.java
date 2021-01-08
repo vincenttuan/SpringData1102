@@ -1,6 +1,8 @@
 package com.spring.mvc.psi.controller;
 
 import com.spring.mvc.psi.entities.Product;
+import com.spring.mvc.psi.repository.Inventory2Repository;
+import com.spring.mvc.psi.repository.InventoryRepository;
 import com.spring.mvc.psi.repository.ProductRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,12 @@ public class PSIController {
     
     @Autowired
     private ProductRepository pr;
+    
+    @Autowired
+    private InventoryRepository ir;
+    
+    @Autowired
+    private Inventory2Repository ir2;
     
     // 讀取商品資料
     @GetMapping(value = {"/product", "/product/{id}", "/product/{delete}/{id}"})
@@ -71,4 +79,11 @@ public class PSIController {
         return "redirect: ../psi/product";
     }
     
+    // 讀取庫存
+    @GetMapping(value = {"/inventory"})
+    public String readInventory(Model model) {
+        model.addAttribute("inventories", ir.findAll());
+        model.addAttribute("inventories2", ir2.findAll());
+        return "psi/inventory";
+    }
 }
