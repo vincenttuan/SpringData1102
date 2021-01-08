@@ -45,7 +45,7 @@
                         <form:form class="pure-form" 
                                    modelAttribute="product" 
                                    method="post" 
-                                   action="${pageContext.request.contextPath}/mvc/psi/product/" >
+                                   action="${pageContext.request.contextPath}/mvc/psi/product" >
                             <fieldset>
                                 <legend>商品表單</legend>
                                 <form:input path="id" readonly="true" /><p />
