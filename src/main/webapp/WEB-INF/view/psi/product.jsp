@@ -55,6 +55,7 @@
                                 <input type="file" name="myfile" id="myfile" /><p />
                                 <form:input path="image" readonly="true" /><p />
                                 <img id="previewImage" src="${product.image}" /><p />
+                                <input type="text" id="_method" name="_method" value="${ _method }" readonly /><p />
                                 <button type="submit" class="pure-button pure-button-primary">Submit</button>
                             </fieldset>
                         </form:form>
@@ -80,8 +81,8 @@
                                                 <td>${ p.id }</td>
                                                 <td>${ p.name }</td>
                                                 <td><img src="${ p.image==null?space:p.image }" width="${ p.image==null?0:50 }"></td>
-                                                <td> </td>
-                                                <td> </td>
+                                                <td><a href="${pageContext.request.contextPath}/mvc/psi/product/${ p.id }">Update</a></td>
+                                                <td><a href="${pageContext.request.contextPath}/mvc/psi/product/delete/${ p.id }">Delete</a></td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>
