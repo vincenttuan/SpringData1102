@@ -1,6 +1,7 @@
 package com.spring.mvc.psi.controller;
 import com.spring.mvc.psi.entities.Product;
 import com.spring.mvc.psi.entities.Purchase;
+import com.spring.mvc.psi.entities.Sales;
 import com.spring.mvc.psi.repository.Inventory2Repository;
 import com.spring.mvc.psi.repository.InventoryRepository;
 import com.spring.mvc.psi.repository.ProductRepository;
@@ -128,4 +129,17 @@ public class PSIController {
         return "psi/sales";
     }
     
+    @PostMapping(value = {"/sales"},
+                 consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String createSales(@RequestBody MultiValueMap<String, String> map) {
+        Integer pid = Integer.parseInt(map.getFirst("pid"));
+        Integer quantity = Integer.parseInt(map.getFirst("quantity"));
+        Integer price = Integer.parseInt(map.getFirst("price"));
+        Sales sales = new Sales();
+        sales.setProduct(pr.findOne(pid));
+        sales.setPrice(price);
+        sales.setQuantity(quantity);
+        sr.saveAndFlush(sales);
+        return "redirect: ../psi/sales";
+    }
 }
