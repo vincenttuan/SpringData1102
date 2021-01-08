@@ -31,7 +31,12 @@
                                    action="${pageContext.request.contextPath}/mvc/psi/product/" >
                             <fieldset>
                                 <legend>商品表單</legend>
-                                
+                                <form:input path="id" readonly="true" /><p />
+                                商品名稱 : <br />
+                                <form:input path="name" placeholder="請輸入商品名稱" /><p />
+                                商品圖片 : <br >
+                                <input type="file" name="myfile" id="myfile" /><p />
+                                <button type="submit" class="pure-button pure-button-primary">Submit</button>
                             </fieldset>
                         </form:form>
                     </td>
