@@ -1,7 +1,7 @@
 -- 庫存 
 -- 建立一個View, 名稱 : Inventory
 -- id, name, 買進數量, 買進總價, 賣出數量, 賣出總價
-SELECT p.id, p.name, 
+SELECT p.id, p.name, p.image,
        pu.q as pu_qty, pu.pq as pu_total,
        sa.q as sa_qty, sa.pq as sa_total
 FROM Product p
@@ -14,9 +14,10 @@ ON p.id = sa.pid;
 -- 建立一個View, 名稱 : Inventory2
 SELECT i.id, 
        i."NAME", 
-       i.PU_QTY-i.SA_QTY as qty, 
-       i.PU_TOTAL/i.PU_QTY as cost ,
+       i.image,
+       i.PU_QTY-coalesce(i.SA_QTY, 0) qty, -- coalesce 合併(若 i.SA_QTY = null 則顯示 0)
+       i.PU_TOTAL/i.PU_QTY as pu_cost , -- 進貨均價 
+       i.SA_TOTAL/i.SA_QTY as sa_cost , -- 銷貨均價
        CAST(i.PU_TOTAL/i.PU_QTY/0.3 AS INTEGER) as price1 ,
        CAST(i.PU_TOTAL/i.PU_QTY/0.2 AS INTEGER) as price2 
 FROM INVENTORY i
-
