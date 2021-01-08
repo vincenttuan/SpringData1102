@@ -64,6 +64,28 @@
                         <form class="pure-form">
                             <fieldset>
                                 <legend>商品列表</legend>
+                                <table class="pure-table pure-table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Image</th>
+                                            <th>Update</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach var="p" items="${ products }">
+                                            <tr>
+                                                <td>${ p.id }</td>
+                                                <td>${ p.name }</td>
+                                                <td>${ p.image }</td>
+                                                <td> </td>
+                                                <td> </td>
+                                            </tr>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
                                 
                             </fieldset>
                         </form>
