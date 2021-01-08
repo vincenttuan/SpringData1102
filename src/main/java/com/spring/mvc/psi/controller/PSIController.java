@@ -22,7 +22,9 @@ public class PSIController {
     @GetMapping(value = {"/product"})
     public String readProduct(Model model) {
         Product product = new Product();
+        
         model.addAttribute("product", product);
+        model.addAttribute("products", pr.findAll());
         return "psi/product";
     }
     
