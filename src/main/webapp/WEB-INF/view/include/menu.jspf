@@ -10,10 +10,10 @@
         </a>
         <!-- PSI -->
         <ul class="pure-menu-list">
-            <li class="pure-menu-item${fn:contains(pageContext.request.requestURI, 'product.jsp')?' menu-item-divided pure-menu-selected':''}">
+            <li >
                 <a href="${pageContext.request.contextPath}/mvc/psi/product" class="pure-menu-link">商品 Product</a>
             </li>
-            <li class="pure-menu-item${fn:contains(pageContext.request.requestURI, 'inventory.jsp')?' menu-item-divided pure-menu-selected':''}">
+            <li >
                 <a href="${pageContext.request.contextPath}/mvc/psi/inventory" class="pure-menu-link">庫存 Inventory</a>
             </li>
             
