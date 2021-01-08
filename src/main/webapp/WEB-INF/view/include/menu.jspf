@@ -16,7 +16,12 @@
             <li>
                 <a href="${pageContext.request.contextPath}/mvc/psi/inventory" class="pure-menu-link">庫存 Inventory</a>
             </li>
-            
+            <li>
+                <a href="${pageContext.request.contextPath}/mvc/psi/purchase" class="pure-menu-link">進貨 Purchase</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}/mvc/psi/sales" class="pure-menu-link">銷貨 Sales</a>
+            </li>
         </ul>
     </div>
 </div>
