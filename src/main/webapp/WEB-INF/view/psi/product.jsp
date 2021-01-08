@@ -79,7 +79,7 @@
                                             <tr>
                                                 <td>${ p.id }</td>
                                                 <td>${ p.name }</td>
-                                                <td>${ p.image }</td>
+                                                <td><img src="${ p.image==null?space:p.image }" width="${ p.image==null?0:50 }"></td>
                                                 <td> </td>
                                                 <td> </td>
                                             </tr>
