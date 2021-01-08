@@ -6,7 +6,24 @@
     <head>
         <!-- Head -->
         <%@include file="../include/head.jspf"  %>
-        
+        <script>
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#image').val(e.target.result);
+                        $('#previewImage').attr('src', e.target.result);
+                        $('#previewImage').attr('width', 100);
+                    }
+                    reader.readAsDataURL(input.files[0]); // convert to base64 string
+                }
+            }
+            $(document).ready(function () {
+                $("#myfile").change(function () {
+                    readURL(this);
+                });
+            });
+        </script>
     </head>
     <body style="padding: 10px">
 
@@ -36,6 +53,7 @@
                                 <form:input path="name" placeholder="請輸入商品名稱" /><p />
                                 商品圖片 : <br >
                                 <input type="file" name="myfile" id="myfile" /><p />
+                                <img id="previewImage" src="${product.image}" /><p />
                                 <button type="submit" class="pure-button pure-button-primary">Submit</button>
                             </fieldset>
                         </form:form>
