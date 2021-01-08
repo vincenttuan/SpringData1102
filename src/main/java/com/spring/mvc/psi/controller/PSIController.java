@@ -4,6 +4,8 @@ import com.spring.mvc.psi.entities.Product;
 import com.spring.mvc.psi.repository.Inventory2Repository;
 import com.spring.mvc.psi.repository.InventoryRepository;
 import com.spring.mvc.psi.repository.ProductRepository;
+import com.spring.mvc.psi.repository.PurchaseRepository;
+import com.spring.mvc.psi.repository.SalesRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +32,12 @@ public class PSIController {
     
     @Autowired
     private Inventory2Repository ir2;
+    
+    @Autowired
+    private PurchaseRepository ur;
+    
+    @Autowired
+    private SalesRepository sr;
     
     // 讀取商品資料
     @GetMapping(value = {"/product", "/product/{id}", "/product/{delete}/{id}"})
@@ -86,4 +94,21 @@ public class PSIController {
         model.addAttribute("inventories2", ir2.findAll());
         return "psi/inventory";
     }
+    
+    // 讀取進貨
+    @GetMapping(value = {"/purchase"})
+    public String readPurchase(Model model) {
+        model.addAttribute("purchases", ur.findAll());
+        model.addAttribute("inventories2", ir2.findAll());
+        return "psi/purchase";
+    }
+    
+    // 讀取銷貨
+    @GetMapping(value = {"/sales"})
+    public String readSales(Model model) {
+        model.addAttribute("sales", sr.findAll());
+        model.addAttribute("inventories2", ir2.findAll());
+        return "psi/sales";
+    }
+    
 }
